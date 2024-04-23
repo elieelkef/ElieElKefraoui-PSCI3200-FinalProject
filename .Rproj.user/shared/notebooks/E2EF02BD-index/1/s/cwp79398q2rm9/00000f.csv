@@ -1,0 +1,3 @@
+"0","ggplot(refugee_dat, aes(x=Estimated.Refugee.Entry, y=Lebanon.Growth.Rate....)) + "
+"0","  geom_point()+"
+"0","  geom_smooth(method=lm)"
