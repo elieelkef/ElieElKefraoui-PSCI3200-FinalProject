@@ -1,0 +1,35 @@
+---
+title: "Proposal"
+format: html
+editor: visual
+---
+
+[Research Question:]{.underline}
+
+In what follows, I will be attempting to answer the following research question: was the impact of migratory inflows and outflows in Lebanon following the Syrian refugee crisis of 2011 significant on the country's economic output? I hypothesize that while Lebanon's economy has likely taken a hit following the crisis, the refugee crisis was not one of its direct causes. This is because despite national media and the government's outrage regarding the resources that were provided for refugees, almost all of that aid was provided by the UNHCR according to several of its reports (https://www.unhcr.org/lb/at-a-glance). In fact, the government even received aid and significant lump sums from the UN in order to provide shelter and better living conditions to the refugees.
+
+```{r}
+setwd("/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment")
+df <- read.csv("preliminary data.csv")
+syria_data <- read.csv("Syria data.csv")
+```
+
+The above data was collected from the World Development Indicators published through the World Bank.
+
+Taking an initial look at the data, there appears to be a very week correlation between the two metrics. Particularly the correlation appears to be -0.028, meaning GDP and migration vary practically independently from one another in this case. This relationship does not hold however, with GDP per Capita, with the correlation between the two appearing to be -0.62. Nevertheless, these are mere correlations, and in order to answer the research question, we would need to focus on causality.
+
+[Methodology:]{.underline}
+
+The methodology I envision is as follows:
+
+1.  Gather data on Lebanon's GDP, GDP per Capita, Migratory inflows and Outflows. This has already been done
+
+2.  Gather data on possible confounders: my initial thought is to focus on the Syrian economy, as the Syrian refugee crisis is the root cause for the spike experienced in 2011. So causes of the crisis in Syria would have caused movements in migratory inflows and outflows in Lebanon. Additionally, Syria is one of Lebanon's greatest trading partners, and a crisis in Syria is sure to have its ramifications in Lebanon. As a result, this would also impact the response variable, and would likely be a confounder.
+
+3.  Run a linear regression model with the GDP of Lebanon as the response variable and net migration as the independent variable. Include all confounders in this model.
+
+4.  Potentially, we could explore the possibility of using a regression discontinuity model, as the onset of the Syrian Civil War in 2011 would lay the ground for such a model.
+
+[Limitations:]{.underline}
+
+While the methodology above would result in the p-values we are looking for, there remains a couple limitations to be acknowledged. First, it is unlikely that the data regarding migratory patterns in Lebanon is completely accurate. Refugees in Lebanon are incentivized to hide there identities by fear of prosecution from the government. They are also scattered across the country. This could underestimate the true impact of migration on the economy. Additionally, this model assumes that the relationship between migration flows and GDP is linear, which is not necessarily the case, especially over several years. This could be dealt with if necessary by adding interaction terms to the model.
