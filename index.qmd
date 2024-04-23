@@ -30,16 +30,18 @@ The dataset at my disposal is a combination of data from the World Development I
 
 The sample consists of monthly data of Syrian refugee inflow into Lebanon (the independent variable), GDP growth rates for both Lebanon (the dependent variable), and Syria (a control), as well as international interest rates (a control). Note that the correlation between the GDP growth of Lebanon and Syrian refugee entry is actually positive throughout 2010s. In particular, Lebanon was experiencing strong growth and quasi-economic prosperity in that period.
 
-{r}
+```{r}
 setwd("/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment")
 refugee_dat <- read.csv("Monthly Dataset.csv")
 library(ggplot2)
 refugee_dat$Lebanon.Growth.Rate....
+```
 
-{r}
+```{r}
 ggplot(refugee_dat, aes(x=Estimated.Refugee.Entry, y=Lebanon.Growth.Rate....)) + 
   geom_point()+
   geom_smooth(method=lm)
+```
 
 The initial relationship is a little ambiguous. This is particularly because of the financial crisis in Lebanon that occurred in 2019 that, according to most economists, is mostly independent of the migration inflow that Lebanon has experienced. Nevertheless, there does appear to be a loose positive relationship between the two variables. In fact, the correlation between GDP growth and refugee inflow is 0.42.
 
