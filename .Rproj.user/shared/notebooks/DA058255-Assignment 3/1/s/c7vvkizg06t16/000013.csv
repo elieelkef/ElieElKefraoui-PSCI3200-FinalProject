@@ -1,0 +1,4 @@
+"0","ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `International Interest Rates`)) +"
+"0","  geom_point() +  "
+"0","  labs(x = ""Estimated Refugee Entry"", y = ""International Interest Rates"", title = ""Scatterplot of International Interest Rates vs Estimated Refugee Entry"", caption = ""Data Source: World Development Indicators and Central Bank of Lebanon"") +"
+"0","  theme_minimal()"

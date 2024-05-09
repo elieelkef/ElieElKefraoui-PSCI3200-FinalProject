@@ -1,0 +1,149 @@
+---
+title: "Assignment 3"
+bibliography: references.bib
+editor: visual
+format: 
+  html:
+    self-contained: true
+---
+
+## 1) Introduction
+
+In 2011, one of the biggest humanitarian crises in recent human history erupted when the Syrian Civil war began. The conflict led to the death of hundreds of thousands, the displacement of millions, and an economic toll in the tens of billions. It is safe to say that the Syrian economy will take years to recover, and the government has firmly lost the faith of its people. The conflict spread in the region, with neighboring countries feeling the brunt of refugee movements. One of these countries is Lebanon.
+
+At its core, this project addresses the economic impact of mass migration on a neighboring nation's economy. In particular, the following analysis attempts to take a deeper look at the impact of the Syrian refugee crisis on the general economy of Lebanon.
+
+Lebanon is the biggest host of refugees per capita in the world, with recent UNHCR estimates placing 1 refugee to each 4 citizens. This has led to uproar from citizens claiming a disruption in safety resulting from increases in refugee concentrations.
+
+My research question will be the as follows: how did the Syrian refugee crisis that started in 2011 impact Lebanon's economy?
+
+This topic is of particular interest to me. As a Lebanese citizen who has seen the mistreatment of refugees in my own country under the guise of national economic prosperity, this topic is near and dear to me. I would like the opportunity to explore this relationship myself, far from biased media outlets and politics. This topic is far from being merely controversial in the Middle East. Migration and its impact on local economies has taken a front stage in global politics, specifically that of the Global North. Extremist stances on migration have driven voting patterns and major elections such as in Argentina, the Netherlands, Portugal, and France.
+
+Here are some of my sources:
+
+World Bank Executive Summary, The World Bank Group, 2013, https://www.worldbank.org/content/dam/Worldbank/document/MNA/LBN-ESIA%20of%20Syrian%20Conflict-%20EX%20SUMMARY%20ENGLISH.pdf
+
+Why Syrian Refugees in Lebanon are a crisis within a crisis, Brookings Institution, 2021, https://www.brookings.edu/articles/why-syrian-refugees-in-lebanon-are-a-crisis-within-a-crisis/
+
+Altındağ Onur, and Kaushal Neeraj. 2021. Do refugees impact voting behavior in the host country? evidence from syrian refugee inflows to turkey. *Public Choice*186, (1-2) (01): 149-178, https://proxy.library.upenn.edu/login?url=https://www.proquest.com/scholarly-journals/do-refugees-impact-voting-behavior-host-country/docview/2481412237/se-2 (accessed May 1, 2024).
+
+[@altindaug2021refugees]
+
+Tumen, Semih. 2016. The economic impact of syrian refugees on host countries: Quasi-experimental evidence from turkey. *The American Economic Review* 106, (5) (05): 456-460, https://proxy.library.upenn.edu/login?url=https://www.proquest.com/scholarly-journals/economic-impact-syrian-refugees-on-host-countries/docview/1788238326/se-2 (accessed May 1, 2024).
+
+[@tumen2016economic]
+
+Edward, Taylor J. 2016. Economic Impact of Refugees. *Cornell University*. [**https://doi-org.proxy.library.upenn.edu/10.1073/pnas.1604566113**](https://doi-org.proxy.library.upenn.edu/10.1073/pnas.1604566113)
+
+[@taylor2016economic]
+
+The articles above acutely assess various impacts of refugees on host countries' economies. They generally agree that refugees mostly have positive impacts on host countries' economies. These articles exhibit significant increases in wages in host countries following refugee inflows. They also show little changes in security patterns in host countries [@daher2023syrian]. However, this project goes deeper by looking at two other factors. First, we assess the impact of Syrian refugee entry on the perceived riskiness of the Lebanese economy. In particular, this riskiness will be modeled by the international interest rates that international investors are willing to offer the central bank of Lebanon for its bonds. Second, this project also differentiates itself by assessing the impact of Syrian refugee entry into the country on the lower, middle, and upper classes of the Lebanese population instead of looking at aggregate measures.
+
+## 2) Hypothesis
+
+My initial hypothesis is that Syrian refugees would not have discouraged aggregate economic growth in Lebanon and do not impact the aggregate risk profile of Lebanon but would likely have impacted the wealth of the Lebanese income distribution. In other words, the inflow of Syrian refugees did not harm the aggregate wealth, but led to a redistribution of wealth. This is for several reasons.
+
+First, looking at the relationship between Syrian refugee inflow and GDP per capita, refugees often constitute a source of cheap labor, reducing costs for companies and other workplaces, increasing these institutions' reach and profits. With an increase in corporate profits comes and increase in consumption, investment, and government revenue through taxes, all three of which are components of a nation's gross domestic product. Additionally, not only did Syrian refugees provide for cheap labor, they also consumed goods and other services, often through income generated through World Bank or UNHCR donations and aids packages. This would likely create further economic activity, and thus a higher GDP, and thus a higher GDP per Capita for a fixed population. All of this is reflected in the Center for Strategic International Studies' research on the crisis (https://www.csis.org/analysis/refugees-could-help-solve-lebanons-economic-crisis)
+
+Second, while the Syrian refugee inflow provides for cheaper labor, it also lowers the wage that Lebanese workers would obtain as markets get more competitive (which is a likely cause of the outrage experienced). As a result, it's likely that some Lebanese families that worked in manual workplaces found themselves either losing their jobs or accepting pay cuts. This is supported by the Brookings paper mentioned above (https://www.brookings.edu/articles/why-syrian-refugees-in-lebanon-are-a-crisis-within-a-crisis/ ).
+
+## 3) Data
+
+The dataset at my disposal is a combination of data from the World Development Indicators, estimations from Trading Economics, and data on international interest rates offered to the Central bank of Lebanon (which will be used as a measure of economic stability in the country).
+
+The sample consists of monthly data of the following variables:
+
+1\) Estimated Refugee Entry: an estimation of monthly Syrian refugee entries into Lebanon. This is the main independent variable of analysis.
+
+2\) International Interest Rates: the interest rates imposed by the international community on sovereign bonds issued by the Lebanese central bank. This will be one of the dependent variables used.
+
+3\) Lebanon Growth Rate: A metric of the GDP growth rate in Lebanon. This will be used as a control.
+
+4\) Syria Growth Rate: A metric of the GDP growth rate in Syria. This will be used as a control.
+
+5\) GDP Per Capita: A metric of the GDP per Capita in Lebanon. This will be one of the dependent variables used.
+
+6\) Top 20% Wealth: A metric of the percentage of wealth owned by the top 20% of earners in Lebanon. This will be one of the dependent variables used.
+
+7\) Financial Accounts: A metric of the net financial flows coming in and out of Lebanon. This will be used as a control.
+
+```{r}
+setwd("/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment")
+refugee_dat <- read.csv("Monthly Dataset.csv")
+colnames(refugee_dat) <- c("Date", "Estimated Refugee Entry", "International Interest Rates", "Lebanon Growth Rate", "Syria Growth Rate", "GDP Per Capita", "Top 20% Wealth (in %)", "Financial Accounts (in USD Millions)" )
+library(ggplot2)
+summary(refugee_dat)
+```
+
+```{r}
+ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `GDP Per Capita`)) +
+  geom_point() +  
+  labs(x = "Estimated Refugee Entry", y = "GDP Per Capita", title = "Scatterplot of GDP Per Capita vs Estimated Refugee Entry", caption = "Data Source: World Development Indicators and Central Bank of Lebanon") +
+  theme_minimal()
+```
+
+```{r}
+ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `International Interest Rates`)) +
+  geom_point() +  
+  labs(x = "Estimated Refugee Entry", y = "International Interest Rates", title = "Scatterplot of International Interest Rates vs Estimated Refugee Entry", caption = "Data Source: World Development Indicators and Central Bank of Lebanon") +
+  theme_minimal()
+```
+
+The two graphs above somewhat align with our initial hypothesis. On the one hand, the graph showcasing the association between estimated refugee entry and international interest rates does appear to show a positive relationship between the two variables. While far from causal at the moment, this graph seems to suggest that there is a perceived increase in risk associated with Lebanon's sovereign debt that arises as a result of refugee entry. This could potentially be causal, i.e. more refugees entering the country could lead the government to have to undertake more debt, rendering its borrowing patterns less sustainable and thus more risky. On the other hand, this relationship could be caused by a confounder, such as the deterioration of the economic situation in Syria, one of Lebanon's major trading partners. This would seem to contradict our hypothesis that an increase in refugee entry does not impact the Lebanese risk profile.
+
+On the other hand, the graph showcasing the association between estimated refugee entry and GDP Per Capita does not appear to offer as concrete of a relationship. At the very beginning of the graph, there appears to be a somewhat positive relationship between the two variables, whereas this relationship seems to flip to a negative association at the very tail of the graph. This could mean that refugee entry only increases GDP Per Capita up to a certain cap, which would somewhat corroborate the observed patterns in the overall literature. Otherwise, it could also simply represent a lack of a relationship, which would also corroborate our hypothesis that refugee entry does not harm the aggregate welfare of citizens of a host country.
+
+## 4) Research Design 
+
+### a) Regression Model 
+
+Let GDPL and GDPS be Lebanon and Syria's GDP growth respectively, i is the international interest rates, and ref the refugee inflow. Also, let GDPPerCap be the GDP Per Capita in Lebanon, and FA be the financial account.
+
+We will build out two separate regression models.
+
+The first regression model associates international interest rates to refugee inflow, and would look as follows:
+
+i = $\alpha$ + $\beta$ ref + $\gamma1$ GDPS + $\gamma2$ GDPL + $\gamma3$ FA + e
+
+where e represents the error term. Our hypothesis entails that $\beta$ is not significant, which we will find out once running the model, and assuming that all the regression assumptions are fulfilled. In particular, we assume no colliders are in the model (which is why we are working with the lagged Syrian growth as a variable), as well as the existence of different confounders (such as economic instability in the country which would be caused by syrian refugee inflow).
+
+```{r}
+lm1 <- lm(`International Interest Rates` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
+summary(lm1)
+```
+
+Given the p-value of 0.9472 associated with the estimated refugee entry, we can assume that refugee entry has no impact on international interest rates. This validates our hypothesis that refugee fluctuations do not bear a significant impact on the risk profile of a country.
+
+The second regression model associates international GPD Per Capita to refugee inflow, and would look as follows:
+
+GDPPerCap = $\alpha$ + $\beta$ ref + $\gamma1$ GDPS + $\gamma2$ GDPL + $\gamma3$ FA + e
+
+where e represents the error term. Our hypothesis entails that $\beta$ is either positive or negligible, which we will find out once running the model, and assuming that all the regression assumptions are fulfilled. In particular, we assume no colliders are in the model (which is why we are working with the lagged Syrian growth as a variable), as well as the existence of different confounders (such as economic instability in the country which would be caused by syrian refugee inflow).
+
+```{r}
+lm2 <- lm(`GDP Per Capita` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
+summary(lm2)
+```
+
+This model confirms our initial hypothesis that refugee inflow does not bear any harm to average wealth per capita, as the 0.31583 p-value would suggest.
+
+There exist certain limitations to this analysis. First, this analysis only includes 49 data points. While fulfilling the necessary required number of observations for the Central Limit Theorem to apply, more data would certainly be preferable.
+
+Second, GDP Per Capita is an average metric. It does not accurately represent the experiences of a people. In other word, just because refugee inflow does not impact GDP Per Capita does not mean that people aren't worse off as a result of an increase in the stock of refugee. In particular, income distribution matters a lot here, as a shift in wealth concentrations would not necessarily impact GDP Per Capita, but would certainly lead to an increase in the number of poor people. As a result, this is a confounder that we will be tackling in the next section.
+
+### b) Empirical Extension 
+
+As discussed above, the goal of this project is to assess the impact of refugee inflows in Lebanon on the economic welfare of individuals. While our previous analysis does claim that there is no impact on average wealth, distribution of wealth may occur as a result of refugee inflows. This is because refugees compete for lower paying jobs that are often manual or physical with other working class citizens. When more competition accrues and in the absence of adequate laws, it is likely that wages will fall for these already low paying jobs. As a result, lower or middle class individuals would make less money, while shareholders and business owners likely reap the benefits of lower labor costs. In order to investigate this relationship, I will rerun the model above on the top20 variable as the dependent variable, representing the concentration of wealth in the country's richest 20%.
+
+The model will look as follows:
+
+top20 = $\alpha$ + $\beta$ ref + $\gamma1$ GDPS + $\gamma2$ GDPL + $\gamma3$ FA + e
+
+where e represents the error term. Our hypothesis entails that $\beta$ is positive, which we will find out once running the model, and assuming that all the regression assumptions are fulfilled. In particular, we assume no colliders are in the model (which is why we are working with the lagged Syrian growth as a variable), as well as the existence of different confounders (such as economic instability in the country which would be caused by syrian refugee inflow).
+
+```{r}
+lm3 <- lm(`Top 20% Wealth (in %)` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
+summary(lm3)
+```
+
+The model above provides a 0.404496 p-value for the independent variable of interest, meaning that refugee inflows do not significantly impact wealth concentration in the top 20%. This allows us to rule out the possibility that refugee inflows change the distribution of wealth while keeping the average wealth intact. As a result, our previous finding is more robust, and we can more confidently rule out the possibility that refugee inflows in Lebanon have led to an increase in perceived poverty.
