@@ -94,7 +94,7 @@ options(warn = -1)
 library(gt)
 library(tidyr)
 library(dplyr)
-
+ options(startup_message = FALSE)
 # Select numeric columns only, excluding "Date"
 numeric_data <- refugee_dat %>% select(-Date) %>% select_if(is.numeric)
 
