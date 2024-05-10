@@ -5,7 +5,7 @@
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1713300432854.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -18,7 +18,7 @@
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "143:8431"
+        "rmdVisualModeLocation": "5364:1497"
     },
     "folds": "",
     "lastKnownWriteTime": 1715374789,
