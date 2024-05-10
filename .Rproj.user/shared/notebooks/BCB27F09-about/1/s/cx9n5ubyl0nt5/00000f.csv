@@ -1,0 +1,3 @@
+"0","library(modelsummary)"
+"0","lm1 <- lm(`International Interest Rates` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)"
+"0","modelsummary(lm1, output = ""gt"", statistic = ""{p.value}"")"

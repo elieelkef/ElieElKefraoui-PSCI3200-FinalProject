@@ -1,0 +1,2 @@
+"0","lm2 <- lm(`GDP Per Capita` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)"
+"0","modelsummary(lm2, output = ""gt"", statistic = ""{p.value}"")"
