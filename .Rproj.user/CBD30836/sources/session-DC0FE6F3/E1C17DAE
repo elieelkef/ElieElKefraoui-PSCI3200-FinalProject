@@ -3,7 +3,7 @@
     "path": "~/Documents/GitHub/ElieElKefraoui-PSCI3200-FinalProject/about.qmd",
     "project_path": "about.qmd",
     "type": "quarto_markdown",
-    "hash": "1227853221",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1715375127724.0,
@@ -12,20 +12,20 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "205,18",
-        "scrollLine": "211",
-        "rmdVisualMode": "false",
+        "cursorPosition": "0,0",
+        "scrollLine": "0",
+        "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "25880:9603"
+        "rmdVisualModeLocation": "110:2012"
     },
     "folds": "",
-    "lastKnownWriteTime": 1715376873,
+    "lastKnownWriteTime": 1715377084,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1715376873432,
+    "last_content_update": 1715377084202,
     "read_only": false,
     "read_only_alternatives": []
 }
