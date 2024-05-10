@@ -1,0 +1,7 @@
+"0","options(warn = -1)"
+"0","setwd(""/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment"")"
+"2","Warning: The working directory was changed to /Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."
+"0","refugee_dat <- read.csv(""Monthly Dataset.csv"")"
+"0","colnames(refugee_dat) <- c(""Date"", ""Estimated Refugee Entry"", ""International Interest Rates"", ""Lebanon Growth Rate"", ""Syria Growth Rate"", ""GDP Per Capita"", ""Top 20% Wealth (in %)"", ""Financial Accounts (in USD Millions)"" )"
+"0","library(ggplot2)"
+"0",""

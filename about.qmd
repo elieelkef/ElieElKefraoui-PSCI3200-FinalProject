@@ -80,6 +80,7 @@ The sample consists of monthly data of the following variables:
 7\) Financial Accounts: A metric of the net financial flows coming in and out of Lebanon. This will be used as a control, as it could potentially be a confounder. The logic here is that a large financial can often create the perception of wealth or creditworthiness without necessarily having macro factors to back it up. As a result, financial accounts could be a mediator variable, as refugee inflow could impact financial accounts given the levels of aid received, and financial accounts could subsequently impact GDP per Capita and interest rates. As a result, we will include financial accounts as a control in our models.
 
 ```{r, echo=FALSE}
+options(warn = -1)
 setwd("/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment")
 refugee_dat <- read.csv("Monthly Dataset.csv")
 colnames(refugee_dat) <- c("Date", "Estimated Refugee Entry", "International Interest Rates", "Lebanon Growth Rate", "Syria Growth Rate", "GDP Per Capita", "Top 20% Wealth (in %)", "Financial Accounts (in USD Millions)" )
