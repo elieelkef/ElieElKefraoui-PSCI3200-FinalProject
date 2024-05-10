@@ -7,7 +7,7 @@ format:
     self-contained: true
 ---
 
-## 1) Intxzdasdsadasdsaroduction
+## 1) Introduction
 
 In 2011, one of the biggest humanitarian crises in recent human history erupted when the Syrian Civil war began. The conflict led to the death of hundreds of thousands, the displacement of millions, and an economic toll in the tens of billions [@altindaug2021refugees]. It is safe to say that the Syrian economy will take years to recover, and the government has firmly lost the faith of its people. The conflict spread in the region, with neighboring countries feeling the brunt of refugee movements. One of these countries is Lebanon.
 
@@ -77,7 +77,7 @@ The sample consists of monthly data of the following variables:
 
 7\) Financial Accounts: A metric of the net financial flows coming in and out of Lebanon. This will be used as a control, as it could potentially be a confounder. The logic here is that a large financial can often create the perception of wealth or creditworthiness without necessarily having macro factors to back it up. As a result, financial accounts could be a mediator variable, as refugee inflow could impact financial accounts given the levels of aid received, and financial accounts could subsequently impact GDP per Capita and interest rates. As a result, we will include financial accounts as a control in our models.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 options(warn = -1)
 setwd("/Users/elie/Desktop/Penn/semester 8/psci3200/datat assignment")
 refugee_dat <- read.csv("Monthly Dataset.csv")
@@ -88,7 +88,7 @@ library(ggplot2)
 
 We will build a summary statistics table in what follows.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 options(warn = -1)
 # Load necessary libraries
 library(gt)
@@ -143,7 +143,7 @@ In addition, GDP Per Capita is an average metric. It does not accurately represe
 
 The graph below is a scatterplot of GDP per Capita (on the y-axis) versus refugee inflow (on the x-axis) at each frequency level. Note that the refugee entry variable has been lagged to better reflect its real impact on the dependent variable of interest.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `GDP Per Capita`)) +
   geom_point() +  
   labs(x = "Estimated Refugee Entry", y = "GDP Per Capita", title = "Scatterplot of GDP Per Capita vs Estimated Refugee Entry", caption = "Data Source: World Development Indicators and Central Bank of Lebanon") +
@@ -152,7 +152,7 @@ ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `GDP Per Capita`)) +
 
 The graph below is a scatterplot of international interest rates (on the y-axis) versus refugee inflow (on the x-axis) at each frequency level. Note that the refugee entry variable has been lagged to better reflect its real impact on the dependent variable of interest.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(refugee_dat, aes(x = `Estimated Refugee Entry`, y = `International Interest Rates`)) +
   geom_point() +  
   labs(x = "Estimated Refugee Entry", y = "International Interest Rates", title = "Scatterplot of International Interest Rates vs Estimated Refugee Entry", caption = " Data Source: World Development Indicators and Central Bank of Lebanon.") +
@@ -165,7 +165,7 @@ On the other hand, the graph showcasing the association between estimated refuge
 
 Below we run our first model, regressing international interest rates on several other variables.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 options(warn = -1)
 library(modelsummary)
 lm1 <- lm(`International Interest Rates` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
@@ -176,7 +176,7 @@ Given the p-value of 0.947 associated with the estimated refugee entry, and the 
 
 The second regression model associates international GPD Per Capita to refugee inflow, and would look as follows:
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 options(warn = -1)
 lm2 <- lm(`GDP Per Capita` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
 modelsummary(lm2, output = "gt", statistic = "{p.value}")
@@ -200,7 +200,7 @@ where e represents the error term. Our hypothesis entails that $\beta$ is positi
 
 ### b) Findings
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 options(warn = -1)
 lm3 <- lm(`Top 20% Wealth (in %)` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
 modelsummary(lm3, output = "gt", statistic = "{p.value}")
