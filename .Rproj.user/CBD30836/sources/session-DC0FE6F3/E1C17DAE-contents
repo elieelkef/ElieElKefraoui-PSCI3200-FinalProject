@@ -91,6 +91,7 @@ library(ggplot2)
 We will build a summary statistics table in what follows.
 
 ```{r, echo=FALSE}
+options(warn = -1)
 # Load necessary libraries
 library(gt)
 library(tidyr)
@@ -167,6 +168,7 @@ On the other hand, the graph showcasing the association between estimated refuge
 Below we run our first model, regressing international interest rates on several other variables.
 
 ```{r, echo=FALSE}
+options(warn = -1)
 library(modelsummary)
 lm1 <- lm(`International Interest Rates` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
 modelsummary(lm1, output = "gt", statistic = "{p.value}")
@@ -177,6 +179,7 @@ Given the p-value of 0.947 associated with the estimated refugee entry, and the 
 The second regression model associates international GPD Per Capita to refugee inflow, and would look as follows:
 
 ```{r, echo=FALSE}
+options(warn = -1)
 lm2 <- lm(`GDP Per Capita` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
 modelsummary(lm2, output = "gt", statistic = "{p.value}")
 ```
@@ -200,6 +203,7 @@ where e represents the error term. Our hypothesis entails that $\beta$ is positi
 ### b) Findings
 
 ```{r, echo=FALSE}
+options(warn = -1)
 lm3 <- lm(`Top 20% Wealth (in %)` ~ `Estimated Refugee Entry` + `Lebanon Growth Rate` + `Syria Growth Rate` + `Financial Accounts (in USD Millions)`, data = refugee_dat)
 modelsummary(lm3, output = "gt", statistic = "{p.value}")
 ```
